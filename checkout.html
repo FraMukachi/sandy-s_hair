@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkout - Sandy Hair</title>
+    <title>Checkout - Sandy Hair | Secure Payment</title>
     <link rel="stylesheet" href="checkout.css">
 </head>
 <body>
 
     <div class="checkout-container">
 
+        <!-- Header -->
         <header class="checkout-header">
             <a href="index.html" class="back-link">← Back to Shop</a>
             <h1>🛍️ Secure Checkout</h1>
             <p>Sandy Hair - Premium Wigs</p>
+            <p class="security-badge">🔒 SSL Encrypted | Secured by PayFast</p>
         </header>
 
         <!-- Step Indicator -->
@@ -38,8 +40,12 @@
         <section class="checkout-section" id="step1">
             <h2 class="section-heading">👤 Your Details</h2>
             <div class="form-group">
-                <label for="fullName">Full Name *</label>
-                <input type="text" id="fullName" placeholder="Enter your full name" required>
+                <label for="firstName">First Name *</label>
+                <input type="text" id="firstName" placeholder="Enter your first name" required>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name *</label>
+                <input type="text" id="lastName" placeholder="Enter your last name" required>
             </div>
             <div class="form-group">
                 <label for="email">Email Address *</label>
@@ -47,7 +53,7 @@
             </div>
             <div class="form-group">
                 <label for="phone">Phone Number *</label>
-                <input type="tel" id="phone" placeholder="+27 72 123 4567" required>
+                <input type="tel" id="phone" placeholder="072 123 4567" required>
             </div>
             <button class="btn-primary" onclick="Checkout.goToStep(2)">Continue to Delivery →</button>
         </section>
@@ -58,9 +64,9 @@
 
             <label class="delivery-option selected" id="paxiOpt">
                 <input type="radio" name="delivery" value="paxi" checked onchange="Checkout.selectDelivery('paxi')">
-                <div>
+                <div class="delivery-content">
                     <strong>📦 Paxi Delivery</strong>
-                    <small>4-7 working days | Collect at PEP/PAXI</small>
+                    <small>4-7 working days | Collect at PEP/PAXI point</small>
                     <span class="delivery-price">from R59.95</span>
                 </div>
             </label>
@@ -69,7 +75,7 @@
                 <div class="form-group">
                     <label for="paxiCode">Paxi Point Code *</label>
                     <input type="text" id="paxiCode" placeholder="e.g., POTC001" required>
-                    <small class="help-text">Find your code at <a href="https://paxi.co.za" target="_blank">paxi.co.za</a></small>
+                    <small class="help-text">Find your nearest Paxi code at <a href="https://paxi.co.za" target="_blank">paxi.co.za</a></small>
                 </div>
                 <div class="form-group">
                     <label for="paxiPoint">Paxi Point Name *</label>
@@ -78,18 +84,18 @@
             </div>
 
             <div class="info-box">
-                <h4>💡 Paxi Prices:</h4>
-                <p>📦 Small (1-2 units): <strong>R59.95</strong></p>
-                <p>📦 Medium (3-4 units): <strong>R79.95</strong></p>
-                <p>📦 Large (5+ units): <strong>R109.95</strong></p>
-                <p class="free-note">🎉 <strong>Free delivery</strong> on orders over R650!</p>
+                <h4>💡 Paxi Delivery Prices:</h4>
+                <p>📦 Small Parcel (1-2 units): <strong>R59.95</strong></p>
+                <p>📦 Medium Parcel (3-4 units): <strong>R79.95</strong></p>
+                <p>📦 Large Parcel (5+ units): <strong>R109.95</strong></p>
+                <p class="free-delivery-note">🎉 <strong>Free delivery</strong> on orders over R650!</p>
             </div>
 
             <label class="delivery-option" id="collectOpt">
                 <input type="radio" name="delivery" value="collection" onchange="Checkout.selectDelivery('collection')">
-                <div>
+                <div class="delivery-content">
                     <strong>📍 Free Collection</strong>
-                    <small>Potchefstroom only</small>
+                    <small>Potchefstroom only | Address provided after order</small>
                     <span class="delivery-price free">FREE</span>
                 </div>
             </label>
@@ -103,25 +109,40 @@
         <!-- Step 3: Payment -->
         <section class="checkout-section" id="step3" style="display:none;">
             <h2 class="section-heading">💳 Payment Method</h2>
-            <p class="payment-intro">Select your bank for <strong>Instant EFT</strong> payment:</p>
+            <p class="payment-intro">You will be redirected to <strong>PayFast</strong> to complete your payment securely.</p>
 
-            <div class="bank-grid">
-                <div class="bank-option selected" onclick="Checkout.selectBank('capitec', this)">🏦 Capitec Pay</div>
-                <div class="bank-option" onclick="Checkout.selectBank('nedbank', this)">🏦 Nedbank</div>
-                <div class="bank-option" onclick="Checkout.selectBank('absa', this)">🏦 Absa</div>
-                <div class="bank-option" onclick="Checkout.selectBank('fnb', this)">🏦 FNB</div>
-                <div class="bank-option" onclick="Checkout.selectBank('standard', this)">🏦 Standard Bank</div>
-                <div class="bank-option" onclick="Checkout.selectBank('investec', this)">🏦 Investec</div>
-                <div class="bank-option" onclick="Checkout.selectBank('tymebank', this)">🏦 Tyme Bank</div>
+            <div class="payment-options">
+                <div class="payment-info-card">
+                    <h4>🔒 What PayFast Accepts:</h4>
+                    <div class="payment-methods-grid">
+                        <div class="payment-method">🏦 Instant EFT</div>
+                        <div class="payment-method">💳 Credit Card</div>
+                        <div class="payment-method">💳 Debit Card</div>
+                        <div class="payment-method">📱 Capitec Pay</div>
+                        <div class="payment-method">💵 Masterpass</div>
+                        <div class="payment-method">🪙 Scan to Pay</div>
+                        <div class="payment-method">🏦 FNB, Nedbank, Absa</div>
+                        <div class="payment-method">🏦 Standard Bank, Investec</div>
+                    </div>
+                </div>
             </div>
 
-            <p class="security-note">🔒 Secured by <strong>Peach Payments</strong></p>
+            <p class="security-note">
+                🔒 You will be redirected to PayFast's secure payment page.<br>
+                We never see or store your card details.
+            </p>
 
-            <div class="manual-eft">
-                <h4>📋 Manual EFT Details</h4>
-                <p><strong>Bank:</strong> Capitec</p>
-                <p><strong>Account:</strong> 1234567890</p>
-                <p><strong>Reference:</strong> Your Name + Product</p>
+            <div class="manual-eft-box">
+                <h4>📋 Prefer Manual EFT?</h4>
+                <p>Use our banking details below:</p>
+                <div class="bank-details">
+                    <p><strong>Bank:</strong> Capitec</p>
+                    <p><strong>Account Holder:</strong> Sandy Hair</p>
+                    <p><strong>Account Number:</strong> 1234567890</p>
+                    <p><strong>Account Type:</strong> Savings</p>
+                    <p><strong>Reference:</strong> Your Name + Product</p>
+                    <p class="manual-eft-note">⚠️ Manual EFT may take 1-2 business days to clear. Use PayFast for instant processing.</p>
+                </div>
             </div>
 
             <div class="btn-group">
@@ -132,24 +153,67 @@
         <!-- Order Summary -->
         <section class="checkout-section" id="orderSummary">
             <h2 class="section-heading">🛒 Order Summary</h2>
-            <div id="orderItems"><p class="empty-cart">Loading cart...</p></div>
+            <div id="orderItems">
+                <p class="empty-cart">Loading cart...</p>
+            </div>
             <div class="order-total">
                 <span>Total:</span>
                 <span id="grandTotal">R0.00</span>
             </div>
+
+            <!-- PayFast Form -->
+            <form id="payfastForm" action="https://www.payfast.co.za/eng/process" method="POST" style="display:none;">
+                <!-- Merchant Details -->
+                <input type="hidden" name="merchant_id" id="pfMerchantId" value="10000100">
+                <input type="hidden" name="merchant_key" id="pfMerchantKey" value="46f0cd694581a">
+                
+                <!-- Return URLs -->
+                <input type="hidden" name="return_url" id="pfReturnUrl" value="https://sandyhair.co.za/success.html">
+                <input type="hidden" name="cancel_url" id="pfCancelUrl" value="https://sandyhair.co.za/cancel.html">
+                <input type="hidden" name="notify_url" id="pfNotifyUrl" value="https://sandyhair.co.za/notify.php">
+                
+                <!-- Transaction Details -->
+                <input type="hidden" name="m_payment_id" id="pfPaymentId" value="">
+                <input type="hidden" name="amount" id="pfAmount" value="">
+                <input type="hidden" name="item_name" id="pfItemName" value="">
+                <input type="hidden" name="item_description" id="pfItemDescription" value="">
+                
+                <!-- Customer Details -->
+                <input type="hidden" name="name_first" id="pfNameFirst" value="">
+                <input type="hidden" name="name_last" id="pfNameLast" value="">
+                <input type="hidden" name="email_address" id="pfEmail" value="">
+                <input type="hidden" name="cell_number" id="pfCell" value="">
+                
+                <!-- Custom Data -->
+                <input type="hidden" name="custom_str1" id="pfCustom1" value="">
+                <input type="hidden" name="custom_str2" id="pfCustom2" value="">
+                <input type="hidden" name="custom_str3" id="pfCustom3" value="">
+            </form>
+
             <button class="btn-pay" id="payBtn" onclick="Checkout.processPayment()">
-                💰 Pay Now & Place Order
+                💰 Pay Now via PayFast
             </button>
+
+            <!-- Processing State -->
+            <div class="processing-msg" id="processingMsg" style="display:none;">
+                <div class="spinner"></div>
+                <p>Redirecting to PayFast secure payment...</p>
+                <p class="processing-sub">Please don't close this page</p>
+            </div>
+
+            <!-- Order Complete -->
             <div class="success-msg" id="successMsg">
-                <h3>✅ Order Placed!</h3>
-                <p>Your order has been received successfully.</p>
+                <h3>✅ Payment Successful!</h3>
+                <p>Thank you for your order!</p>
                 <p>Order Reference: <strong id="orderRef"></strong></p>
-                <p>Please use this reference when making your EFT payment.</p>
+                <p>We will process your order and send tracking details soon.</p>
+                <a href="index.html" class="btn-back-to-shop">← Continue Shopping</a>
             </div>
         </section>
 
         <div class="security-footer">
-            <p>🔒 Secured by Peach Payments | SSL Encrypted</p>
+            <p>🔒 Secured by <strong>PayFast</strong> | PCI DSS Level 1 Compliant</p>
+            <img src="https://www.payfast.co.za/images/logo/payfast-logo.svg" alt="PayFast" class="payfast-logo">
         </div>
     </div>
 
