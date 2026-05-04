@@ -15,9 +15,9 @@ Checkout.config = {
     // payfastUrl: 'https://sandbox.payfast.co.za/eng/process', // Testing/Sandbox
     
     // Return URLs - REPLACE with your actual website URLs
-    returnUrl: 'https://https://sandy-s-hair.vercel.app/success.html',
-    cancelUrl: 'https://https://sandy-s-hair.vercel.app/cancel.html',
-    notifyUrl: 'https://https://sandy-s-hair.vercel.app/notify.php'
+    returnUrl: 'https://sandy-s-hair.vercel.app/success.html',
+    cancelUrl: 'https://sandy-s-hair.vercel.app/cancel.html',
+    notifyUrl: 'https://sandy-s-hair.vercel.app/notify.php'
 };
 
 // ===== State =====
