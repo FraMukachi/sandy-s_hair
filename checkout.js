@@ -7,8 +7,8 @@ const Checkout = {};
 // ===== Configuration - REPLACE THESE WITH YOUR REAL PAYFAST DETAILS =====
 Checkout.config = {
     // PayFast Merchant Credentials
-    merchantId: '10000100',        // REPLACE: Your PayFast Merchant ID
-    merchantKey: '46f0cd694581a',  // REPLACE: Your PayFast Merchant Key
+    merchantId: '14200440',        // REPLACE: Your PayFast Merchant ID
+    merchantKey: 'n6nehnkkafqcp',  // REPLACE: Your PayFast Merchant Key
     
     // PayFast URLs
     payfastUrl: 'https://www.payfast.co.za/eng/process',   // Production
