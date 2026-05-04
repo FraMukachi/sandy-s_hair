@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Sandy Hair</title>
+    <link rel="stylesheet" href="checkout.css">
+</head>
+<body>
+
+    <div class="checkout-container">
+
+        <header class="checkout-header">
+            <a href="index.html" class="back-link">← Back to Shop</a>
+            <h1>🛍️ Secure Checkout</h1>
+            <p>Sandy Hair - Premium Wigs</p>
+        </header>
+
+        <!-- Step Indicator -->
+        <div class="step-indicator">
+            <div class="step active" id="step1Ind">
+                <span class="step-dot">1</span>
+                <span class="step-label">Details</span>
+            </div>
+            <div class="step-line"></div>
+            <div class="step" id="step2Ind">
+                <span class="step-dot">2</span>
+                <span class="step-label">Delivery</span>
+            </div>
+            <div class="step-line"></div>
+            <div class="step" id="step3Ind">
+                <span class="step-dot">3</span>
+                <span class="step-label">Payment</span>
+            </div>
+        </div>
+
+        <!-- Step 1: Customer Details -->
+        <section class="checkout-section" id="step1">
+            <h2 class="section-heading">👤 Your Details</h2>
+            <div class="form-group">
+                <label for="fullName">Full Name *</label>
+                <input type="text" id="fullName" placeholder="Enter your full name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" placeholder="your@email.com" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number *</label>
+                <input type="tel" id="phone" placeholder="+27 72 123 4567" required>
+            </div>
+            <button class="btn-primary" onclick="Checkout.goToStep(2)">Continue to Delivery →</button>
+        </section>
+
+        <!-- Step 2: Delivery -->
+        <section class="checkout-section" id="step2" style="display:none;">
+            <h2 class="section-heading">🚚 Delivery Method</h2>
+
+            <label class="delivery-option selected" id="paxiOpt">
+                <input type="radio" name="delivery" value="paxi" checked onchange="Checkout.selectDelivery('paxi')">
+                <div>
+                    <strong>📦 Paxi Delivery</strong>
+                    <small>4-7 working days | Collect at PEP/PAXI</small>
+                    <span class="delivery-price">from R59.95</span>
+                </div>
+            </label>
+
+            <div id="paxiFields">
+                <div class="form-group">
+                    <label for="paxiCode">Paxi Point Code *</label>
+                    <input type="text" id="paxiCode" placeholder="e.g., POTC001" required>
+                    <small class="help-text">Find your code at <a href="https://paxi.co.za" target="_blank">paxi.co.za</a></small>
+                </div>
+                <div class="form-group">
+                    <label for="paxiPoint">Paxi Point Name *</label>
+                    <input type="text" id="paxiPoint" placeholder="e.g., PEP Potchefstroom" required>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <h4>💡 Paxi Prices:</h4>
+                <p>📦 Small (1-2 units): <strong>R59.95</strong></p>
+                <p>📦 Medium (3-4 units): <strong>R79.95</strong></p>
+                <p>📦 Large (5+ units): <strong>R109.95</strong></p>
+                <p class="free-note">🎉 <strong>Free delivery</strong> on orders over R650!</p>
+            </div>
+
+            <label class="delivery-option" id="collectOpt">
+                <input type="radio" name="delivery" value="collection" onchange="Checkout.selectDelivery('collection')">
+                <div>
+                    <strong>📍 Free Collection</strong>
+                    <small>Potchefstroom only</small>
+                    <span class="delivery-price free">FREE</span>
+                </div>
+            </label>
+
+            <div class="btn-group">
+                <button class="btn-back" onclick="Checkout.goToStep(1)">← Back</button>
+                <button class="btn-primary" onclick="Checkout.goToStep(3)">Continue to Payment →</button>
+            </div>
+        </section>
+
+        <!-- Step 3: Payment -->
+        <section class="checkout-section" id="step3" style="display:none;">
+            <h2 class="section-heading">💳 Payment Method</h2>
+            <p class="payment-intro">Select your bank for <strong>Instant EFT</strong> payment:</p>
+
+            <div class="bank-grid">
+                <div class="bank-option selected" onclick="Checkout.selectBank('capitec', this)">🏦 Capitec Pay</div>
+                <div class="bank-option" onclick="Checkout.selectBank('nedbank', this)">🏦 Nedbank</div>
+                <div class="bank-option" onclick="Checkout.selectBank('absa', this)">🏦 Absa</div>
+                <div class="bank-option" onclick="Checkout.selectBank('fnb', this)">🏦 FNB</div>
+                <div class="bank-option" onclick="Checkout.selectBank('standard', this)">🏦 Standard Bank</div>
+                <div class="bank-option" onclick="Checkout.selectBank('investec', this)">🏦 Investec</div>
+                <div class="bank-option" onclick="Checkout.selectBank('tymebank', this)">🏦 Tyme Bank</div>
+            </div>
+
+            <p class="security-note">🔒 Secured by <strong>Peach Payments</strong></p>
+
+            <div class="manual-eft">
+                <h4>📋 Manual EFT Details</h4>
+                <p><strong>Bank:</strong> Capitec</p>
+                <p><strong>Account:</strong> 1234567890</p>
+                <p><strong>Reference:</strong> Your Name + Product</p>
+            </div>
+
+            <div class="btn-group">
+                <button class="btn-back" onclick="Checkout.goToStep(2)">← Back</button>
+            </div>
+        </section>
+
+        <!-- Order Summary -->
+        <section class="checkout-section" id="orderSummary">
+            <h2 class="section-heading">🛒 Order Summary</h2>
+            <div id="orderItems"><p class="empty-cart">Loading cart...</p></div>
+            <div class="order-total">
+                <span>Total:</span>
+                <span id="grandTotal">R0.00</span>
+            </div>
+            <button class="btn-pay" id="payBtn" onclick="Checkout.processPayment()">
+                💰 Pay Now & Place Order
+            </button>
+            <div class="success-msg" id="successMsg">
+                <h3>✅ Order Placed!</h3>
+                <p>Your order has been received successfully.</p>
+                <p>Order Reference: <strong id="orderRef"></strong></p>
+                <p>Please use this reference when making your EFT payment.</p>
+            </div>
+        </section>
+
+        <div class="security-footer">
+            <p>🔒 Secured by Peach Payments | SSL Encrypted</p>
+        </div>
+    </div>
+
+    <script src="checkout.js"></script>
+</body>
+</html>
