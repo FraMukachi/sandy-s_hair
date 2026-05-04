@@ -161,34 +161,34 @@
                 <span id="grandTotal">R0.00</span>
             </div>
 
-            <!-- PayFast Form -->
-            <form id="payfastForm" action="https://www.payfast.co.za/eng/process" method="POST" style="display:none;">
-                <!-- Merchant Details -->
-                <input type="hidden" name="merchant_id" id="pfMerchantId" value="10000100">
-                <input type="hidden" name="merchant_key" id="pfMerchantKey" value="46f0cd694581a">
-                
-                <!-- Return URLs -->
-                <input type="hidden" name="return_url" id="pfReturnUrl" value="https://sandyhair.co.za/success.html">
-                <input type="hidden" name="cancel_url" id="pfCancelUrl" value="https://sandyhair.co.za/cancel.html">
-                <input type="hidden" name="notify_url" id="pfNotifyUrl" value="https://sandyhair.co.za/notify.php">
-                
-                <!-- Transaction Details -->
-                <input type="hidden" name="m_payment_id" id="pfPaymentId" value="">
-                <input type="hidden" name="amount" id="pfAmount" value="">
-                <input type="hidden" name="item_name" id="pfItemName" value="">
-                <input type="hidden" name="item_description" id="pfItemDescription" value="">
-                
-                <!-- Customer Details -->
-                <input type="hidden" name="name_first" id="pfNameFirst" value="">
-                <input type="hidden" name="name_last" id="pfNameLast" value="">
-                <input type="hidden" name="email_address" id="pfEmail" value="">
-                <input type="hidden" name="cell_number" id="pfCell" value="">
-                
-                <!-- Custom Data -->
-                <input type="hidden" name="custom_str1" id="pfCustom1" value="">
-                <input type="hidden" name="custom_str2" id="pfCustom2" value="">
-                <input type="hidden" name="custom_str3" id="pfCustom3" value="">
-            </form>
+            <!-- PayFast Production Form -->
+<form id="payfastForm" action="https://www.payfast.co.za/eng/process" method="POST">
+    <!-- Merchant Details -->
+    <input type="hidden" name="merchant_id" value="14200440">
+    <input type="hidden" name="merchant_key" value="n6nehnkkafqcp">
+    
+    <!-- Return URLs -->
+    <input type="hidden" name="return_url" value="https://sandy-s-1.0.0.payfast.com/success.html">
+    <input type="hidden" name="cancel_url" value="https://sandy-s-1.0.0.payfast.com/cancel.html">
+    <input type="hidden" name="notify_url" value="https://sandy-s-1.0.0.payfast.com/notify.php">
+    
+    <!-- Transaction Details (filled by JavaScript) -->
+    <input type="hidden" name="m_payment_id" id="pfPaymentId" value="">
+    <input type="hidden" name="amount" id="pfAmount" value="">
+    <input type="hidden" name="item_name" id="pfItemName" value="">
+    <input type="hidden" name="item_description" id="pfItemDescription" value="">
+    
+    <!-- Customer Details (filled by JavaScript) -->
+    <input type="hidden" name="name_first" id="pfNameFirst" value="">
+    <input type="hidden" name="name_last" id="pfNameLast" value="">
+    <input type="hidden" name="email_address" id="pfEmail" value="">
+    <input type="hidden" name="cell_number" id="pfCell" value="">
+    
+    <!-- Custom Data (filled by JavaScript) -->
+    <input type="hidden" name="custom_str1" id="pfCustom1" value="">
+    <input type="hidden" name="custom_str2" id="pfCustom2" value="">
+    <input type="hidden" name="custom_str3" id="pfCustom3" value="">
+</form>
 
             <button class="btn-pay" id="payBtn" onclick="Checkout.processPayment()">
                 💰 Pay Now via PayFast
