@@ -15,9 +15,9 @@ Checkout.config = {
     // payfastUrl: 'https://sandbox.payfast.co.za/eng/process', // Testing/Sandbox
     
     // Return URLs - REPLACE with your actual website URLs
-    returnUrl: 'https://sandyhair.co.za/success.html',
-    cancelUrl: 'https://sandyhair.co.za/cancel.html',
-    notifyUrl: 'https://sandyhair.co.za/notify.php'
+    returnUrl: 'https://https://sandy-s-hair.vercel.app/success.html',
+    cancelUrl: 'https://https://sandy-s-hair.vercel.app/cancel.html',
+    notifyUrl: 'https://https://sandy-s-hair.vercel.app/notify.php'
 };
 
 // ===== State =====
@@ -25,7 +25,7 @@ Checkout.state = {
     currentStep: 1,
     delivery: 'paxi',
     cart: [],
-    deliveryFee: 59.95,
+    deliveryFee: 60.00,
     subtotal: 0,
     total: 0,
     paymentId: ''
@@ -81,8 +81,8 @@ Checkout.updateSummary = function() {
             </div>`;
         } else {
             const itemCount = Checkout.state.cart.reduce((sum, item) => sum + item.quantity, 0);
-            if (itemCount <= 2) Checkout.state.deliveryFee = 59.95;
-            else if (itemCount <= 4) Checkout.state.deliveryFee = 79.95;
+            if (itemCount <= 2) Checkout.state.deliveryFee = 60.00;
+            else if (itemCount <= 4) Checkout.state.deliveryFee = 90.00;
             else Checkout.state.deliveryFee = 109.95;
             
             html += `<div class="order-item">
