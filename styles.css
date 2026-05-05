@@ -336,6 +336,67 @@ a {
     animation: pulse 2s infinite;
 }
 
+/* Promo Card - sits in the product grid */
+.promo-card {
+    background: linear-gradient(135deg, #e91e63, #c2185b);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(233, 30, 99, 0.3);
+    display: flex;
+    flex-direction: column;
+}
+
+.promo-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.promo-card-text {
+    padding: 15px;
+    color: white;
+    text-align: center;
+}
+
+.promo-card-text h3 {
+    font-size: 1.3rem;
+    margin-bottom: 5px;
+    color: white;
+}
+
+.promo-card-text p {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    opacity: 0.95;
+}
+
+/* Product grid - force 2 columns */
+.product-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 15px !important;
+}
+
+/* Make promo card span full width on mobile */
+@media (max-width: 480px) {
+    .product-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 10px !important;
+    }
+    
+    .promo-card img {
+        height: 150px;
+    }
+    
+    .promo-card-text h3 {
+        font-size: 1rem;
+    }
+    
+    .promo-card-text p {
+        font-size: 0.75rem;
+    }
+}
+
 @keyframes pulse {
     0%, 100% { transform: scale(1); }
     50% { transform: scale(1.05); }
