@@ -81,11 +81,14 @@ SandyHair.renderProducts = function() {
     
     var html = '';
     
-    // Promo banner at the very top with no gap
-    html += '<div class="promo-banner" style="margin-bottom:20px;">';
-    html += '<img src="images/promo-banner.jpg" alt="Buy Any 3 Wigs for R1500" style="width:100%;border-radius:15px;" onerror="this.style.display=\'none\'">';
-    html += '<h3>SPECIAL OFFER: Buy Any 3 Wigs for R1500!</h3>';
+    // Promo card - sits in the grid as a card next to first product
+    html += '<div class="promo-card">';
+    html += '<img src="images/promo-banner.jpg" alt="Buy Any 3 Wigs for R1500" onerror="this.style.display=\'none\'">';
+    html += '<div class="promo-card-text">';
+    html += '<h3>SPECIAL OFFER</h3>';
+    html += '<p>Buy Any 3 Wigs for R1500!</p>';
     html += '<p>Mix and match from our collection. Discount applied automatically at checkout.</p>';
+    html += '</div>';
     html += '</div>';
     
     SandyHair.products.forEach(function(product) {
