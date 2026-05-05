@@ -30,7 +30,7 @@ SandyHair.products = [
     },
     {
         id: 'wavy_layered_burgundy',
-        name: 'Wavy Layered Burgundy',
+        name: '20" Wavy Layered Burgundy',
         price: 800,
         oldPrice: 950,
         description: 'Wavy Layered Burgundy with HD lace.',
@@ -41,7 +41,7 @@ SandyHair.products = [
     },
     {
         id: 'jet_black',
-        name: 'Jet Black Straight Unit',
+        name: '24" Jet Black Straight Unit',
         price: 900,
         oldPrice: 950,
         description: 'Sleek jet black straight unit.',
@@ -63,7 +63,7 @@ SandyHair.products = [
     },
     {
         id: 'fringe',
-        name: 'Fringe Layered Bob',
+        name: '16" Fringe Layered Bob',
         price: 700,
         oldPrice: 950,
         description: 'Fringe layered bob, perfect face-framing style.',
@@ -74,7 +74,7 @@ SandyHair.products = [
     },
     {
         id: 'velvet',
-        name: 'Velvet Layered Unit',
+        name: '22" Velvet Riot',
         price: 850,
         oldPrice: 950,
         description: 'Velvet textured layered unit.',
@@ -117,8 +117,8 @@ SandyHair.products = [
         promo: null
     },
     {
-        id: 'water_wave',
-        name: 'Water Wave Unit',
+        id: ' water_wave',
+        name: '24" Water Wave Unit',
         price: 950,
         oldPrice: 1050,
         description: 'Gorgeous water wave texture.',
@@ -129,7 +129,7 @@ SandyHair.products = [
     },
     {
         id: 'ash_blonde',
-        name: 'Ash Blonde',
+        name: '26" Ash Blonde',
         price: 900,
         oldPrice: 950,
         description: 'Trendy ash blonde unit.',
@@ -140,7 +140,7 @@ SandyHair.products = [
     },
     {
         id: 'copper',
-        name: 'Copper Unit',
+        name: '12" Copper Unit',
         price: 650,
         oldPrice: 750,
         description: 'Warm copper toned unit.',
@@ -151,7 +151,7 @@ SandyHair.products = [
     },
     {
         id: 'blonde',
-        name: 'Blonde Unit',
+        name: '12" Blonde Unit',
         price: 650,
         oldPrice: 750,
         description: 'Classic blonde unit.',
