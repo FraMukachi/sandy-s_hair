@@ -1,312 +1,335 @@
-/* ============================================
-   Sandy Hair - PayFast Production Checkout
-   3 Wigs for R1500 Promotion
-   ============================================ */
+const SandyHair = {};
 
-const Checkout = {};
+SandyHair.products = [
+    {
+        id: 'jet_black_bob',
+        name: '10" Jet Black Bob',
+        price: 450,
+        oldPrice: null,
+        description: 'High-volume, pre-plucked natural black bob with a slight wave.',
+        specs: ['10 Inches', 'Swiss Lace', '150% Density'],
+        colors: ['black', 'brown'],
+        image: 'images/jet_black_bob.jpg',
+        promo: 'Buy Any 3 Of Your Choice For R1500'
+    },
+    {
+        id: 'mocha_hairess',
+        name: '16" Mocha Hairess',
+        price: 800,
+        oldPrice: null,
+        description: 'Our viral #1 unit. Wispy bangs and long layers of hair.',
+        specs: ['16 Inches', 'Transparent Lace'],
+        colors: [],
+        image: 'images/mocha_hairess.jpg',
+        promo: '243.8K Likes'
+    },
+    {
+        id: 'wavy_layered_burgundy',
+        name: '20" Wavy Layered Burgundy',
+        price: 800,
+        oldPrice: 950,
+        description: 'Wavy Layered Burgundy with a hint of red.',
+        specs: ['HD Lace', '150% Density'],
+        colors: [],
+        image: 'images/wavy_layered_burgundy.jpg',
+        promo: null
+    },
+    {
+        id: 'jet_black',
+        name: '24" Jet Black Straight Unit',
+        price: 900,
+        oldPrice: 950,
+        description: 'Sleek jet black straight unit.',
+        specs: ['HD Lace', '150% Density'],
+        colors: [],
+        image: 'images/jet_black.jpg',
+        promo: null
+    },
+    {
+        id: 'wavy',
+        name: '26" Wavy Layered Unit',
+        price: 900,
+        oldPrice: 950,
+        description: 'Long wavy layered unit with beautiful movement.',
+        specs: ['26 Inches', 'HD Lace', '150% Density'],
+        colors: [],
+        image: 'images/wavy.jpg',
+        promo: null
+    },
+    {
+        id: 'fringe',
+        name: '16" Fringe Layered Bob',
+        price: 700,
+        oldPrice: 950,
+        description: 'Fringe layered bob, perfect face-framing style.',
+        specs: ['HD Lace', '150% Density'],
+        colors: [],
+        image: 'images/fringe.jpg',
+        promo: null
+    },
+    {
+        id: 'velvet',
+        name: '22" Velvet Riot',
+        price: 850,
+        oldPrice: 950,
+        description: 'Velvet textured layered unit.',
+        specs: ['22 Inches', 'HD Lace', '150% Density'],
+        colors: [],
+        image: 'images/velvet.jpg',
+        promo: null
+    },
+    {
+        id: 'wavy_layered_unit',
+        name: '12" Wavy Layered Unit',
+        price: 650,
+        oldPrice: 750,
+        description: 'Wavy layered unit, perfect shorter length.',
+        specs: ['12 Inches', '150% Density'],
+        colors: [],
+        image: 'images/wavy_layered_unit.jpg',
+        promo: null
+    },
+    {
+        id: 'cocoa_empress',
+        name: '26" Cocoa Empress',
+        price: 800,
+        oldPrice: 950,
+        description: 'Beautiful cocoa brown empress unit.',
+        specs: ['26 Inches', '150% Density'],
+        colors: [],
+        image: 'images/cocoa_empress.jpg',
+        promo: null
+    },
+    {
+        id: 'solange_bob',
+        name: '8" Solange Bob',
+        price: 500,
+        oldPrice: 550,
+        description: 'Cute short Solange bob.',
+        specs: ['8 Inches', '150% Density'],
+        colors: [],
+        image: 'images/solange_bob.jpg',
+        promo: null
+    },
+    {
+        id: 'water_wave',
+        name: '24" Water Wave Unit',
+        price: 950,
+        oldPrice: 1050,
+        description: 'Gorgeous water wave texture.',
+        specs: ['24 Inches', '150% Density'],
+        colors: [],
+        image: 'images/water_wave.jpg',
+        promo: null
+    },
+    {
+        id: 'ash_blonde',
+        name: '26" Ash Blonde',
+        price: 900,
+        oldPrice: 950,
+        description: 'Trendy ash blonde unit.',
+        specs: ['HD Lace', '150% Density'],
+        colors: [],
+        image: 'images/ash_blonde.jpg',
+        promo: null
+    },
+    {
+        id: 'copper',
+        name: '12" Copper Unit',
+        price: 650,
+        oldPrice: 750,
+        description: 'Warm copper toned unit.',
+        specs: ['HD Lace', '150% Density'],
+        colors: [],
+        image: 'images/copper.jpg',
+        promo: null
+    },
+    {
+        id: 'blonde',
+        name: '12" Blonde Unit',
+        price: 650,
+        oldPrice: 750,
+        description: 'Classic blonde unit.',
+        specs: ['HD Lace', '150% Density'],
+        colors: [],
+        image: 'images/blonde.jpg',
+        promo: null
+    },
+    {
+        id: 'copper_blonde',
+        name: '12" Copper Blonde',
+        price: 650,
+        oldPrice: null,
+        description: 'Sleek, elegant layered unit.',
+        specs: ['12 Inches', 'Swiss Lace', 'Pre-plucked'],
+        colors: ['blonde', 'brown'],
+        image: 'images/copper_blonde.jpg',
+        promo: null
+    }
+];
 
-// PayFast Production Configuration
-Checkout.config = {
-    merchantId: '14200440',
-    merchantKey: 'n6nehnkkafqcp',
-    payfastUrl: 'https://www.payfast.co.za/eng/process',
-    returnUrl: 'https://sandyhair.co.za/success.html',
-    cancelUrl: 'https://sandyhair.co.za/cancel.html',
-    notifyUrl: 'https://sandyhair.co.za/notify.php'
-};
+SandyHair.cart = [];
 
-// Promo: 3 Wigs for R1500
-Checkout.promo = {
-    requiredItems: 3,
-    promoPrice: 1500,
-    pricePerUnit: 500
-};
-
-// State
-Checkout.state = {
-    currentStep: 1,
-    delivery: 'paxi',
-    cart: [],
-    deliveryFee: 60.00,
-    subtotal: 0,
-    total: 0,
-    paymentId: '',
-    promoApplied: false,
-    promoSavings: 0
-};
-
-Checkout.loadCart = function() {
-    const saved = localStorage.getItem('sandyHairCart');
+SandyHair.loadCart = function() {
+    var saved = localStorage.getItem('sandyHairCart');
     if (saved) {
-        try { Checkout.state.cart = JSON.parse(saved); } catch (e) { Checkout.state.cart = []; }
+        try { SandyHair.cart = JSON.parse(saved); } catch (e) { SandyHair.cart = []; }
+    }
+    SandyHair.updateCartUI();
+};
+
+SandyHair.saveCart = function() {
+    localStorage.setItem('sandyHairCart', JSON.stringify(SandyHair.cart));
+    SandyHair.updateCartUI();
+};
+
+SandyHair.addToCart = function(productId) {
+    var product = null;
+    for (var i = 0; i < SandyHair.products.length; i++) {
+        if (SandyHair.products[i].id === productId) {
+            product = SandyHair.products[i];
+            break;
+        }
+    }
+    if (!product) return;
+    
+    var existing = null;
+    for (var j = 0; j < SandyHair.cart.length; j++) {
+        if (SandyHair.cart[j].productId === productId) {
+            existing = SandyHair.cart[j];
+            break;
+        }
     }
     
-    if (Checkout.state.cart.length === 0) {
-        document.getElementById('orderItems').innerHTML = 
-            '<p class="empty-cart">Your cart is empty. <a href="index.html">Continue shopping</a></p>';
-        document.getElementById('grandTotal').textContent = 'R0.00';
-        document.getElementById('payBtn').disabled = true;
+    if (existing) {
+        existing.quantity += 1;
+    } else {
+        SandyHair.cart.push({
+            productId: product.id,
+            productName: product.name,
+            price: product.price,
+            quantity: 1
+        });
+    }
+    
+    SandyHair.saveCart();
+    SandyHair.showToast(product.name + ' added to cart!');
+    
+    var totalItems = 0;
+    for (var k = 0; k < SandyHair.cart.length; k++) {
+        totalItems += SandyHair.cart[k].quantity;
+    }
+    if (totalItems === 2) {
+        SandyHair.showToast('Add 1 more wig to get 3 for R1500!');
+    }
+};
+
+SandyHair.updateCartUI = function() {
+    var countEl = document.getElementById('cartCount');
+    if (countEl) {
+        var total = 0;
+        for (var i = 0; i < SandyHair.cart.length; i++) {
+            total += SandyHair.cart[i].quantity;
+        }
+        countEl.textContent = total;
+        countEl.style.display = total > 0 ? 'flex' : 'none';
+    }
+};
+
+SandyHair.openZoom = function(imageSrc) {
+    var modal = document.getElementById('zoomModal');
+    var img = document.getElementById('zoomedImg');
+    if (!modal || !img) return;
+    img.src = imageSrc;
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+};
+
+SandyHair.closeZoom = function() {
+    var modal = document.getElementById('zoomModal');
+    if (!modal) return;
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+};
+
+SandyHair.showToast = function(message) {
+    var toast = document.getElementById('toast');
+    var msg = document.getElementById('toastMessage');
+    if (!toast || !msg) return;
+    msg.textContent = message;
+    toast.classList.add('show');
+    setTimeout(function() { toast.classList.remove('show'); }, 3000);
+};
+
+SandyHair.renderProducts = function() {
+    var grid = document.getElementById('productGrid');
+    if (!grid) {
+        console.error('productGrid not found');
         return;
     }
     
-    Checkout.updateSummary();
-};
-
-Checkout.updateSummary = function() {
-    const container = document.getElementById('orderItems');
-    let originalSubtotal = 0;
-    let html = '';
+    var html = '';
     
-    const totalItems = Checkout.state.cart.reduce((sum, item) => sum + item.quantity, 0);
-    Checkout.state.promoApplied = totalItems >= Checkout.promo.requiredItems;
+    html += '<div class="promo-banner">';
+    html += '<h3>SPECIAL OFFER: Buy Any 3 Wigs for R1500!</h3>';
+    html += '<p>Mix and match from our collection. Discount applied automatically at checkout.</p>';
+    html += '</div>';
     
-    if (Checkout.state.promoApplied) {
-        html += `
-            <div class="cart-promo-indicator">
-                🎉 <strong>3-for-R1500 Promo Applied!</strong> You save R${originalSubtotal > 0 ? (originalSubtotal - 1500).toFixed(2) : '0.00'}!
-            </div>
-        `;
-    } else if (totalItems === 2) {
-        html += `
-            <div class="cart-promo-indicator" style="background:#fff3e0;color:#e65100;">
-                🔥 Add 1 more wig to get <strong>3 for R1500!</strong>
-            </div>
-        `;
-    }
-    
-    Checkout.state.cart.forEach((item, index) => {
-        const itemTotal = item.price * item.quantity;
-        originalSubtotal += itemTotal;
+    for (var i = 0; i < SandyHair.products.length; i++) {
+        var product = SandyHair.products[i];
+        var deliveryFrom = 60.00;
+        var totalFrom = product.price + deliveryFrom;
         
-        let priceDisplay = `R${itemTotal.toFixed(2)}`;
-        
-        if (Checkout.state.promoApplied) {
-            priceDisplay = `<span style="text-decoration:line-through;color:#999;">R${itemTotal.toFixed(2)}</span> <span style="color:#4caf50;font-weight:bold;">R${(Checkout.promo.pricePerUnit * item.quantity).toFixed(2)}</span>`;
-        }
-        
-        html += `
-            <div class="order-item">
-                <span class="order-item-name">${item.productName}</span>
-                <span class="order-item-qty">×${item.quantity}</span>
-                <span class="order-item-price">${priceDisplay}</span>
-                <button class="remove-btn" onclick="Checkout.removeItem(${index})">×</button>
-            </div>
-        `;
-    });
-    
-    if (Checkout.state.promoApplied) {
-        const groupsOf3 = Math.floor(totalItems / Checkout.promo.requiredItems);
-        const remainder = totalItems % Checkout.promo.requiredItems;
-        
-        let remainderSubtotal = 0;
-        if (remainder > 0) {
-            const sortedByPrice = [...Checkout.state.cart].sort((a, b) => a.price - b.price);
-            let remaining = remainder;
-            for (let item of sortedByPrice) {
-                if (remaining <= 0) break;
-                const take = Math.min(item.quantity, remaining);
-                remainderSubtotal += item.price * take;
-                remaining -= take;
+        var colorHTML = '';
+        if (product.colors && product.colors.length > 0) {
+            colorHTML = '<div class="color-options"><span class="color-label">Available in:</span>';
+            for (var c = 0; c < product.colors.length; c++) {
+                colorHTML += '<div class="color-circle ' + product.colors[c] + '"></div>';
             }
+            colorHTML += '</div>';
         }
         
-        Checkout.state.subtotal = (groupsOf3 * Checkout.promo.promoPrice) + remainderSubtotal;
-        Checkout.state.promoSavings = originalSubtotal - Checkout.state.subtotal;
-    } else {
-        Checkout.state.subtotal = originalSubtotal;
-        Checkout.state.promoSavings = 0;
-    }
-    
-    if (Checkout.state.delivery === 'paxi') {
-        if (totalItems >= 3 || Checkout.state.subtotal >= 650) {
-            Checkout.state.deliveryFee = 0;
-            html += '<div class="order-item"><span>🚚 Paxi Delivery</span><span class="order-item-price free">FREE</span></div>';
-        } else {
-            if (totalItems <= 2) Checkout.state.deliveryFee = 60.00;
-            else Checkout.state.deliveryFee = 80.00;
-            html += `<div class="order-item"><span>🚚 Paxi Delivery</span><span class="order-item-price">R${Checkout.state.deliveryFee.toFixed(2)}</span></div>`;
+        var oldPriceHTML = '';
+        if (product.oldPrice) {
+            oldPriceHTML = '<span class="old-price">R' + product.oldPrice + '</span>';
         }
-    } else {
-        Checkout.state.deliveryFee = 0;
-        html += '<div class="order-item"><span>📍 Collection (Potchefstroom)</span><span class="order-item-price free">FREE</span></div>';
-    }
-    
-    if (Checkout.state.promoSavings > 0) {
-        html += `<div class="order-item savings-row"><span>💰 Promo Savings</span><span class="order-item-price" style="color:#4caf50;">-R${Checkout.state.promoSavings.toFixed(2)}</span></div>`;
-    }
-    
-    Checkout.state.total = Checkout.state.subtotal + Checkout.state.deliveryFee;
-    
-    container.innerHTML = html;
-    document.getElementById('grandTotal').textContent = `R${Checkout.state.total.toFixed(2)}`;
-};
-
-Checkout.removeItem = function(index) {
-    Checkout.state.cart.splice(index, 1);
-    localStorage.setItem('sandyHairCart', JSON.stringify(Checkout.state.cart));
-    Checkout.updateSummary();
-    
-    if (Checkout.state.cart.length === 0) {
-        document.getElementById('payBtn').disabled = true;
-        document.getElementById('orderItems').innerHTML = 
-            '<p class="empty-cart">Your cart is empty. <a href="index.html">Continue shopping</a></p>';
-        document.getElementById('grandTotal').textContent = 'R0.00';
-    }
-};
-
-Checkout.goToStep = function(step) {
-    if (Checkout.state.currentStep === 1 && step > 1) {
-        const first = document.getElementById('firstName').value.trim();
-        const last = document.getElementById('lastName').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const phone = document.getElementById('phone').value.trim();
         
-        if (!first) { alert('Please enter your first name'); return; }
-        if (!last) { alert('Please enter your last name'); return; }
-        if (!email) { alert('Please enter your email address'); return; }
-        if (!phone || phone.length !== 10 || !/^[0-9]+$/.test(phone)) { 
-            alert('Please enter a valid 10-digit phone number'); 
-            return; 
+        var promoHTML = '';
+        if (product.promo) {
+            promoHTML = '<span class="promo-tag">' + product.promo + '</span>';
         }
-    }
-    
-    if (Checkout.state.currentStep === 2 && step === 3) {
-        if (Checkout.state.delivery === 'paxi') {
-            const code = document.getElementById('paxiCode').value.trim();
-            const point = document.getElementById('paxiPoint').value.trim();
-            if (!code) { alert('Please enter your Paxi point code'); return; }
-            if (!point) { alert('Please enter your Paxi point name'); return; }
+        
+        html += '<article class="product-card">';
+        html += '<div class="product-img" onclick="SandyHair.openZoom(\'' + product.image + '\')">';
+        html += promoHTML;
+        html += '<img src="' + product.image + '" alt="' + product.name + '" loading="lazy" onerror="this.src=\'images/fallback.jpg\'">';
+        html += '</div>';
+        html += '<div class="product-details">';
+        html += '<h3>' + product.name + '</h3>';
+        html += '<div class="price">R' + product.price + ' ' + oldPriceHTML + '</div>';
+        html += '<p class="product-description">' + product.description + '</p>';
+        html += '<div class="specs">';
+        for (var s = 0; s < product.specs.length; s++) {
+            html += '<span class="spec">' + product.specs[s] + '</span>';
         }
+        html += '</div>';
+        html += colorHTML;
+        html += '<div class="product-total">';
+        html += '<p>Product: R' + product.price + ' + Delivery: from R' + deliveryFrom.toFixed(2) + '</p>';
+        html += '<p class="total-price">Total from: R' + totalFrom.toFixed(2) + '</p>';
+        html += '</div>';
+        html += '<button class="add-to-cart-btn" onclick="SandyHair.addToCart(\'' + product.id + '\')">Add to Cart</button>';
+        html += '</div>';
+        html += '</article>';
     }
     
-    for (let i = 1; i <= 3; i++) {
-        document.getElementById('step' + i).style.display = 'none';
-    }
-    document.getElementById('step' + step).style.display = 'block';
-    
-    Checkout.state.currentStep = step;
-    Checkout.updateStepIndicator();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    grid.innerHTML = html;
+    console.log('Products rendered: ' + SandyHair.products.length);
 };
 
-Checkout.updateStepIndicator = function() {
-    for (let i = 1; i <= 3; i++) {
-        const ind = document.getElementById('step' + i + 'Ind');
-        if (!ind) continue;
-        ind.classList.remove('active', 'completed');
-        if (i < Checkout.state.currentStep) ind.classList.add('completed');
-        else if (i === Checkout.state.currentStep) ind.classList.add('active');
-    }
+SandyHair.init = function() {
+    SandyHair.loadCart();
+    SandyHair.renderProducts();
 };
 
-Checkout.selectDelivery = function(method) {
-    Checkout.state.delivery = method;
-    document.getElementById('paxiOpt').classList.toggle('selected', method === 'paxi');
-    document.getElementById('collectOpt').classList.toggle('selected', method === 'collection');
-    document.getElementById('paxiFields').style.display = method === 'paxi' ? 'block' : 'none';
-    
-    if (method === 'collection') {
-        document.getElementById('paxiCode').required = false;
-        document.getElementById('paxiPoint').required = false;
-    } else {
-        document.getElementById('paxiCode').required = true;
-        document.getElementById('paxiPoint').required = true;
-    }
-    
-    Checkout.updateSummary();
-};
-
-Checkout.generatePaymentId = function() {
-    return 'SH-' + Date.now().toString(36).toUpperCase() + '-' + Math.random().toString(36).substring(2, 6).toUpperCase();
-};
-
-Checkout.processPayment = function() {
-    if (Checkout.state.cart.length === 0) {
-        alert('Your cart is empty');
-        return;
-    }
-    
-    const firstName = document.getElementById('firstName').value.trim();
-    const lastName = document.getElementById('lastName').value.trim();
-    const email = document.getElementById('email').value.trim();
-    let phone = document.getElementById('phone').value.trim();
-    phone = phone.replace(/[^0-9]/g, '');
-    
-    if (!phone || phone.length !== 10) {
-        alert('Please enter a valid 10-digit phone number');
-        return;
-    }
-    
-    const paxiCode = Checkout.state.delivery === 'paxi' ? document.getElementById('paxiCode').value.trim() : 'COLLECTION';
-    const paxiPoint = Checkout.state.delivery === 'paxi' ? document.getElementById('paxiPoint').value.trim() : 'Potchefstroom';
-    
-    Checkout.state.paymentId = Checkout.generatePaymentId();
-    
-    let itemDesc = Checkout.state.cart.map(i => i.productName + ' x' + i.quantity).join(', ');
-    if (itemDesc.length > 250) itemDesc = itemDesc.substring(0, 247) + '...';
-    
-    const itemName = Checkout.state.cart.length === 1 
-        ? Checkout.state.cart[0].productName 
-        : Checkout.state.cart.length + ' Wig Units' + (Checkout.state.promoApplied ? ' - 3 for R1500' : '');
-    
-    const form = document.getElementById('payfastForm');
-    form.action = Checkout.config.payfastUrl;
-    
-    document.getElementById('pfPaymentId').value = Checkout.state.paymentId;
-    document.getElementById('pfAmount').value = Checkout.state.total.toFixed(2);
-    document.getElementById('pfItemName').value = itemName;
-    document.getElementById('pfItemDescription').value = itemDesc;
-    document.getElementById('pfNameFirst').value = firstName;
-    document.getElementById('pfNameLast').value = lastName;
-    document.getElementById('pfEmail').value = email;
-    document.getElementById('pfCell').value = phone;
-    document.getElementById('pfCustom1').value = paxiCode;
-    document.getElementById('pfCustom2').value = paxiPoint;
-    document.getElementById('pfCustom3').value = Checkout.state.delivery;
-    
-    localStorage.setItem('sandyHairLastOrder', JSON.stringify({
-        paymentId: Checkout.state.paymentId,
-        customer: { firstName, lastName, email, phone },
-        delivery: { method: Checkout.state.delivery, paxiCode, paxiPoint },
-        cart: Checkout.state.cart,
-        total: Checkout.state.total,
-        promoApplied: Checkout.state.promoApplied
-    }));
-    
-    document.getElementById('payBtn').style.display = 'none';
-    document.getElementById('processingMsg').style.display = 'block';
-    
-    setTimeout(() => { form.submit(); }, 1000);
-};
-
-Checkout.checkReturn = function() {
-    const params = new URLSearchParams(window.location.search);
-    if (params.get('status') === 'success') {
-        const lastOrder = localStorage.getItem('sandyHairLastOrder');
-        if (lastOrder) {
-            try {
-                document.getElementById('orderRef').textContent = JSON.parse(lastOrder).paymentId;
-            } catch(e) {}
-        }
-        document.getElementById('successMsg').classList.add('show');
-        document.getElementById('payBtn').style.display = 'none';
-        document.getElementById('processingMsg').style.display = 'none';
-        localStorage.removeItem('sandyHairCart');
-        localStorage.removeItem('sandyHairLastOrder');
-    }
-};
-
-Checkout.init = function() {
-    Checkout.loadCart();
-    document.getElementById('step1').style.display = 'block';
-    document.getElementById('step2').style.display = 'none';
-    document.getElementById('step3').style.display = 'none';
-    Checkout.updateStepIndicator();
-    Checkout.checkReturn();
-    if (Checkout.state.cart.length === 0) {
-        document.getElementById('payBtn').disabled = true;
-    }
-};
-
-document.addEventListener('DOMContentLoaded', Checkout.init);
-window.Checkout = Checkout;
+window.onload = SandyHair.init;
