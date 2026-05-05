@@ -5,17 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout - Sandy Hair | Secure Payment</title>
     <link rel="stylesheet" href="checkout.css">
+    <!-- Step 1: Include the Paystack InlineJS library [citation:10] -->
+    <script src="https://js.paystack.co/v2/inline.js"></script>
 </head>
 <body>
 
     <div class="checkout-container">
 
-        <!-- Header -->
         <header class="checkout-header">
             <a href="index.html" class="back-link">← Back to Shop</a>
             <h1>🛍️ Secure Checkout</h1>
             <p>Sandy Hair - Premium Wigs</p>
-            <p class="security-badge">🔒 SSL Encrypted | Secured by PayFast</p>
+            <p class="security-badge">🔒 SSL Encrypted | Secured by Paystack</p>
         </header>
 
         <!-- Step Indicator -->
@@ -52,8 +53,8 @@
                 <input type="email" id="email" placeholder="your@email.com" required>
             </div>
             <div class="form-group">
-                <label for="phone">Phone Number *</label>
-                <input type="tel" id="phone" placeholder="072 123 4567" required>
+                <label for="phone">Phone Number * (10 digits)</label>
+                <input type="tel" id="phone" placeholder="0712345678" required pattern="[0-9]{10}" maxlength="10">
             </div>
             <button class="btn-primary" onclick="Checkout.goToStep(2)">Continue to Delivery →</button>
         </section>
@@ -66,7 +67,7 @@
                 <input type="radio" name="delivery" value="paxi" checked onchange="Checkout.selectDelivery('paxi')">
                 <div class="delivery-content">
                     <strong>📦 Paxi Delivery</strong>
-                    <small>5-7 working days | Collect at PEP/PAXI point</small>
+                    <small>4-7 working days | Collect at PEP/PAXI point</small>
                     <span class="delivery-price">from R60.00</span>
                 </div>
             </label>
@@ -75,7 +76,6 @@
                 <div class="form-group">
                     <label for="paxiCode">Paxi Point Code *</label>
                     <input type="text" id="paxiCode" placeholder="e.g., POTC001" required>
-                    <small class="help-text">Find your nearest Paxi code at <a href="https://paxi.co.za" target="_blank">paxi.co.za</a></small>
                 </div>
                 <div class="form-group">
                     <label for="paxiPoint">Paxi Point Name *</label>
@@ -86,16 +86,16 @@
             <div class="info-box">
                 <h4>💡 Paxi Delivery Prices:</h4>
                 <p>📦 Small Parcel (1-2 units): <strong>R60.00</strong></p>
-                <p>📦 Medium Parcel (3-4 units): <strong>R90.00</strong></p>
-                <p>📦 Large Parcel (5+ units): <strong>R109.95</strong></p>
-                <p class="free-delivery-note">🎉 <strong>Free delivery</strong> on orders over R1000!</p>
+                <p>📦 Medium Parcel (3-4 units): <strong>R80.00</strong></p>
+                <p>📦 Large Parcel (5+ units): <strong>R110.00</strong></p>
+                <p class="free-delivery-note">🎉 <strong>Free delivery</strong> on orders over R650!</p>
             </div>
 
             <label class="delivery-option" id="collectOpt">
                 <input type="radio" name="delivery" value="collection" onchange="Checkout.selectDelivery('collection')">
                 <div class="delivery-content">
                     <strong>📍 Free Collection</strong>
-                    <small>Potchefstroom only | Address provided after order</small>
+                    <small>Potchefstroom only</small>
                     <span class="delivery-price free">FREE</span>
                 </div>
             </label>
@@ -109,41 +109,19 @@
         <!-- Step 3: Payment -->
         <section class="checkout-section" id="step3" style="display:none;">
             <h2 class="section-heading">💳 Payment Method</h2>
-            <p class="payment-intro">You will be redirected to <strong>PayFast</strong> to complete your payment securely.</p>
+            <p class="payment-intro">Pay securely via <strong>Paystack</strong> using Instant EFT, card, or Masterpass.</p>
 
-            <div class="payment-options">
-                <div class="payment-info-card">
-                    <h4>🔒 What PayFast Accepts:</h4>
-                    <div class="payment-methods-grid">
-                        <div class="payment-method">🏦 Instant EFT</div>
-                        <div class="payment-method">💳 Credit Card</div>
-                        <div class="payment-method">💳 Debit Card</div>
-                        <div class="payment-method">📱 Capitec Pay</div>
-                        <div class="payment-method">💵 Masterpass</div>
-                        <div class="payment-method">🪙 Scan to Pay</div>
-                        <div class="payment-method">🏦 FNB, Nedbank, Absa</div>
-                        <div class="payment-method">🏦 Standard Bank, Investec</div>
-                    </div>
+            <div class="payment-info-card">
+                <h4>🔒 Paystack Accepts:</h4>
+                <div class="payment-methods-grid">
+                    <div class="payment-method">🏦 Instant EFT</div>
+                    <div class="payment-method">💳 Credit/Debit Card</div>
+                    <div class="payment-method">📱 Masterpass</div>
+                    <div class="payment-method">🪙 SnapScan</div>
                 </div>
             </div>
 
-            <p class="security-note">
-                🔒 You will be redirected to PayFast's secure payment page.<br>
-                We never see or store your card details.
-            </p>
-
-            <div class="manual-eft-box">
-                <h4>📋 Prefer Manual EFT?</h4>
-                <p>Use our banking details below:</p>
-                <div class="bank-details">
-                    <p><strong>Bank:</strong> Discovery</p>
-                    <p><strong>Account Holder:</strong> Sandy Hair</p>
-                    <p><strong>Account Number:</strong> 11648426867</p>
-                    <p><strong>Account Type:</strong> Gold Account</p>
-                    <p><strong>Reference:</strong> Your Name + Product</p>
-                    <p class="manual-eft-note">⚠️ Manual EFT may take 1-2 business days to clear. Use PayFast for instant processing.</p>
-                </div>
-            </div>
+            <p class="security-note">🔒 You will be redirected to Paystack's secure payment page.<br>We never see or store your banking details.</p>
 
             <div class="btn-group">
                 <button class="btn-back" onclick="Checkout.goToStep(2)">← Back</button>
@@ -153,51 +131,21 @@
         <!-- Order Summary -->
         <section class="checkout-section" id="orderSummary">
             <h2 class="section-heading">🛒 Order Summary</h2>
-            <div id="orderItems">
-                <p class="empty-cart">Loading cart...</p>
-            </div>
+            <div id="orderItems"><p class="empty-cart">Loading cart...</p></div>
             <div class="order-total">
                 <span>Total:</span>
                 <span id="grandTotal">R0.00</span>
             </div>
 
-            <!-- PayFast Production Form -->
-<form id="payfastForm" action="https://www.payfast.co.za/eng/process" method="POST">
-    <!-- Merchant Details -->
-    <input type="hidden" name="merchant_id" value="14200440">
-    <input type="hidden" name="merchant_key" value="n6nehnkkafqcp">
-    
-    <!-- Return URLs -->
-    <input type="hidden" name="return_url" value="https://sandy-s-1.0.0.payfast.com/success.html">
-    <input type="hidden" name="cancel_url" value="https://sandy-s-1.0.0.payfast.com/cancel.html">
-    <input type="hidden" name="notify_url" value="https://sandy-s-1.0.0.payfast.com/notify.php">
-    
-    <!-- Transaction Details (filled by JavaScript) -->
-    <input type="hidden" name="m_payment_id" id="pfPaymentId" value="">
-    <input type="hidden" name="amount" id="pfAmount" value="">
-    <input type="hidden" name="item_name" id="pfItemName" value="">
-    <input type="hidden" name="item_description" id="pfItemDescription" value="">
-    
-    <!-- Customer Details (filled by JavaScript) -->
-    <input type="hidden" name="name_first" id="pfNameFirst" value="">
-    <input type="hidden" name="name_last" id="pfNameLast" value="">
-    <input type="hidden" name="email_address" id="pfEmail" value="">
-    <input type="hidden" name="cell_number" id="pfCell" value="">
-    
-    <!-- Custom Data (filled by JavaScript) -->
-    <input type="hidden" name="custom_str1" id="pfCustom1" value="">
-    <input type="hidden" name="custom_str2" id="pfCustom2" value="">
-    <input type="hidden" name="custom_str3" id="pfCustom3" value="">
-</form>
-
-            <button class="btn-pay" id="payBtn" onclick="Checkout.processPayment()">
-                💰 Pay Now via PayFast
+            <!-- Paystack Pay Button -->
+            <button class="btn-pay" id="payBtn" onclick="Checkout.payWithPaystack()">
+                💰 Pay Now via Paystack
             </button>
 
             <!-- Processing State -->
             <div class="processing-msg" id="processingMsg" style="display:none;">
                 <div class="spinner"></div>
-                <p>Redirecting to PayFast secure payment...</p>
+                <p>Opening Paystack secure payment...</p>
                 <p class="processing-sub">Please don't close this page</p>
             </div>
 
@@ -212,8 +160,7 @@
         </section>
 
         <div class="security-footer">
-            <p>🔒 Secured by <strong>PayFast</strong> | PCI DSS Level 1 Compliant</p>
-            <img src="https://www.payfast.co.za/images/logo/payfast-logo.svg" alt="PayFast" class="payfast-logo">
+            <p>🔒 Secured by <strong>Paystack</strong> | PCI DSS Level 1 Compliant</p>
         </div>
     </div>
 
