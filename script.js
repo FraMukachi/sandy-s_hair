@@ -15,7 +15,7 @@ SandyHair.products = [
         specs: ['10 Inches', 'Swiss Lace', '150% Density'],
         colors: ['black', 'brown'],
         image: 'images/jet_black_bob.jpg',
-        promo: '🔥 Buy 3 Get 1 Free'
+        promo: '🔥 Buy Any 3 Of Your Choice For R1300'
     },
     {
         id: 'mocha_hairess',
