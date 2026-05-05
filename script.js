@@ -79,7 +79,14 @@ SandyHair.renderProducts = function() {
     var grid = document.getElementById('productGrid');
     if (!grid) return;
     
-    var html = '<div class="promo-banner"><h3>SPECIAL OFFER: Buy Any 3 Wigs for R1500!</h3><p>Mix and match from our collection. Discount applied automatically at checkout.</p></div>';
+    var html = '';
+    
+    // Promo banner at the very top with no gap
+    html += '<div class="promo-banner" style="margin-bottom:20px;">';
+    html += '<img src="images/promo-banner.jpg" alt="Buy Any 3 Wigs for R1500" style="width:100%;border-radius:15px;" onerror="this.style.display=\'none\'">';
+    html += '<h3>SPECIAL OFFER: Buy Any 3 Wigs for R1500!</h3>';
+    html += '<p>Mix and match from our collection. Discount applied automatically at checkout.</p>';
+    html += '</div>';
     
     SandyHair.products.forEach(function(product) {
         var deliveryFrom = 60.00;
