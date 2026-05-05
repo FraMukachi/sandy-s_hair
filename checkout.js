@@ -6,7 +6,7 @@ const Checkout = {};
 
 // Step 2: Configure your Paystack details here
 Checkout.config = {
-    publicKey: 'pk_live_your_live_public_key_here', // REPLACE WITH YOUR LIVE PUBLIC KEY [citation:10]
+    publicKey: 'pk_test_6426c78652762f83cd461215baa1722e5bcbeaa4', // REPLACE WITH YOUR LIVE PUBLIC KEY [citation:10]
 };
 
 // Promo: 3 Wigs for R1500
